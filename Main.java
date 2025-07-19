@@ -4,24 +4,25 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));    
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int N = Integer.parseInt(br.readLine());
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int[] numbers = new int[N];    
+        int[] numbers = new int[9];
 
-        for (int i=0; i<N; i++) {
-            int num = Integer.parseInt(st.nextToken());
+        for (int i=0; i<9; i++) {
+            int num = Integer.parseInt(br.readLine());
             numbers[i] = num;
         }
 
-        int min = numbers[0], max = numbers[0];
-        for (int i=0; i<numbers.length; i++) {
-            if (numbers[i] < min) min = numbers[i];
-            if (numbers[i] > max) max = numbers[i];
+        int max = numbers[0];
+        int count = 1;
+        for (int i = 0; i<numbers.length; i++) {
+            if(numbers[i] > max) {
+                max = numbers[i];
+                count = i+1;
+            }
         }
 
-        bw.write(min + " " + max);
+        bw.write(max + "\n" + count);
 
         bw.flush();
         bw.close();

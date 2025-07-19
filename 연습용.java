@@ -409,9 +409,50 @@ public class 연습용{
         br.close();
     }
 
-    
+    static void func2562() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int[] numbers = new int[9];
+
+        for (int i=0; i<9; i++) {
+            int num = Integer.parseInt(br.readLine());
+            numbers[i] = num;
+        }
+
+        int max = numbers[0];
+        int count = 0;
+        for (int i = 0; i<numbers.length; i++) {
+            if(numbers[i] > max) {
+                max = numbers[i];
+                count = i+1;
+            }
+        }
+
+        bw.write(max + "\n" + count);
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }
+
+    static void func10810() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int N = Integer.parseInt(st.nextToken()), M = Integer.parseInt(st.nextToken());
+        int[] bag = new int[N];
+
+        for (int n=0; n<N; n++) {
+            st = new StringTokenizer(br.readLine());
+            int i = Integer.parseInt(st.nextToken()), j = Integer.parseInt(st.nextToken()), k = Integer.parseInt(st.nextToken());
+
+            
+        }
+    }
 
     public static void main(String[] args) throws IOException{
-        func10818();
+        func2562();
     }
 }
