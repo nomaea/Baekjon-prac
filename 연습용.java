@@ -442,17 +442,80 @@ public class 연습용{
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         int N = Integer.parseInt(st.nextToken()), M = Integer.parseInt(st.nextToken());
-        int[] bag = new int[N];
+        int[] bag = new int[N]; // N개의 바구니 생성
 
-        for (int n=0; n<N; n++) {
-            st = new StringTokenizer(br.readLine());
+        for (int n=0; n<M; n++) {
+            st = new StringTokenizer(br.readLine());    // 토큰 재할당
             int i = Integer.parseInt(st.nextToken()), j = Integer.parseInt(st.nextToken()), k = Integer.parseInt(st.nextToken());
-
-            
+            for (int m=i; m<=j; m++) {
+                bag[m-1] = k;   // i 부터 j 번째 배열에 k 값 저장
+            }
         }
+
+        for (int i=0; i<N; i++) {
+            bw.write(bag[i] + " ");
+        }
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }
+
+    // 배열을 통한 계산에 있어서 위치 더블체크 중요
+    static void func10813() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int N = Integer.parseInt(st.nextToken()), M = Integer.parseInt(st.nextToken());
+        int[] basket = new int[N];
+
+        for (int i=0; i<N; i++) {
+            basket[i] = i+1;
+        }
+
+        for (int n=0; n<M; n++) {
+            st = new StringTokenizer(br.readLine());
+            int i = Integer.parseInt(st.nextToken()) - 1, j = Integer.parseInt(st.nextToken()) - 1;
+            
+            int temp = basket[i];
+            basket[i] = basket[j];
+            basket[j] = temp;
+        }
+
+        for (int i=0; i<N; i++) {
+            bw.write(basket[i] + " ");
+        }
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }
+
+    static void func5597() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        boolean[] stu_num = new boolean[31];
+
+
+        for (int i=0; i<28; i++) {
+            int n = Integer.parseInt(br.readLine());
+            stu_num[n] = true;
+        }
+
+        for (int i=1; i<=30; i++) {
+            if(!stu_num[i]) {   // !stu_num[i] 은 오른쪽과 같은 의미 stu_num[i] == false
+                bw.write(i + "\n");
+            }
+        }
+
+        bw.flush();
+        bw.close();
+        br.close();
     }
 
     public static void main(String[] args) throws IOException{
-        func2562();
+        func5597();
     }
 }
