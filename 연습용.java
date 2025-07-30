@@ -1,7 +1,9 @@
 import java.util.Scanner;
+import java.util.Set;
 import java.io.*;
 import java.util.StringTokenizer;
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class 연습용{
 
@@ -515,7 +517,143 @@ public class 연습용{
         br.close();
     }
 
+    // JAVA의 자료구조 중 Set 활용 (중복 없는 자료구조)
+    static void func3052() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        /*
+        int[] split = new int[10];
+
+        for (int i=0; i<10; i++) {
+            split[i] = num[i] % 42;
+        }
+        */
+
+        Set<Integer> split = new HashSet<>();
+
+        for (int i=0; i<10; i++) {
+            int N = Integer.parseInt(br.readLine());
+            split.add(N%42);
+        }
+
+        bw.write(split.size() + "\n");  // BufferedWriter 사용 시 write로 출력 시 "입력된 정수의 하위 16비트를 유니코드 문잘호 해석해서 단일 문자로 출력하므로" write(int) 는 "정수출력" X, "문자 출력"
+        // 때문에 문자열 반환이 필요하다
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }    
+
+    static void func10811() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int N = Integer.parseInt(st.nextToken()), M = Integer.parseInt(st.nextToken());
+        int[] basket = new int[N];
+        
+        for (int i=0; i<N; i++) {
+            basket[i] = i+1;
+        }
+
+        // int count = 0;
+        for (int a=0; a<M; a++) {
+            st = new StringTokenizer(br.readLine());
+            int i = Integer.parseInt(st.nextToken()) - 1, j = Integer.parseInt(st.nextToken()) - 1;
+                /*  for (int b=i; b>=j; b++) {
+                    int num = basket[b];
+                    basket[b] = basket[j-count];
+                    count++;
+                }   */
+               while (i < j) {
+                int temp = basket[i];
+                basket[i] = basket[j];
+                basket[j] =temp;
+                i++;
+                j--;
+            }
+        }
+
+        for (int i=0; i<N; i++) {
+            bw.write(basket[i] + " ");
+        }
+    
+        bw.flush();
+        bw.close();
+        br.close();
+    } 
+
+    static void func1546() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int N = Integer.parseInt(br.readLine());
+        int[] score = new int[N];
+        
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        for (int i=0; i<N; i++) {
+            int num = Integer.parseInt(st.nextToken());
+            score[i] = num;
+        }
+
+        int max = score[0];
+
+        for (int i=1; i<score.length; i++) {
+            if (score[i] > max) {
+                max = score[i];
+            }
+        }
+
+        double sum = 0;
+
+        for (int i=0; i<N; i++) {
+            double split = (double)score[i] / max * 100;
+            sum += split;            
+        }
+
+        double avg = sum / N;
+
+        bw.write(avg + "\n");
+    
+        bw.flush();
+        bw.close();
+        br.close();
+    }
+
+    static void func27866() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+
+        String word = br.readLine();
+        char[] wordArray = word.toCharArray();
+
+        int N = Integer.parseInt(br.readLine());
+
+        bw.write(wordArray[N-1]);
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }
+
+    static void func2743() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+
+        String word = br.readLine();
+        char[] wordArray = word.toCharArray();
+
+        bw.write(wordArray.length + "\n");
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }
+
     public static void main(String[] args) throws IOException{
-        func5597();
+        func2743();
     }
 }

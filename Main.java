@@ -6,23 +6,11 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int[] numbers = new int[9];
 
-        for (int i=0; i<9; i++) {
-            int num = Integer.parseInt(br.readLine());
-            numbers[i] = num;
-        }
+        String word = br.readLine();
+        char[] wordArray = word.toCharArray();
 
-        int max = numbers[0];
-        int count = 1;
-        for (int i = 0; i<numbers.length; i++) {
-            if(numbers[i] > max) {
-                max = numbers[i];
-                count = i+1;
-            }
-        }
-
-        bw.write(max + "\n" + count);
+        bw.write(wordArray.length + "\n");
 
         bw.flush();
         bw.close();
