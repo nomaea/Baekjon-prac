@@ -653,7 +653,75 @@ public class 연습용{
         br.close();
     }
 
+    static void func9086() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int Case = Integer.parseInt(br.readLine());
+
+        
+        for (int i=0; i<Case; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            String word = st.nextToken();
+
+            bw.write(word.charAt(0));
+            bw.write(word.charAt(word.length()-1) + "\n");
+        }
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }
+
+    static void func11654() throws IOException{
+        int n = System.in.read();
+        System.out.println(n);
+    }
+
+    static void func11720() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int N = Integer.parseInt(br.readLine());
+        String num = br.readLine();
+        int sum=0;
+
+        for (int i=0; i<N; i++) {
+            char digitChar = num.charAt(i);
+            int realnum = digitChar - '0';
+            sum += realnum;
+        }
+
+        System.out.println(sum);
+
+        br.close();
+    }
+
+    static void func10809() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int[] positions = new int[26];
+        Arrays.fill(positions, -1);
+        
+        String word = br.readLine();
+        for (int i=0; i<word.length(); i++) {
+                char in = word.charAt(i);
+                int index = in - 'a';
+
+                if (positions[index] == -1) {
+                    positions[index] = i;
+                }
+        }
+        for (int i=0; i<positions.length; i++) {
+            bw.write(positions[i] + " ");
+        }
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }
+
     public static void main(String[] args) throws IOException{
-        func2743();
+        func10809();
     }
 }
