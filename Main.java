@@ -5,26 +5,12 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int[] positions = new int[26];
-        Arrays.fill(positions, -1);
-        
         String word = br.readLine();
-        for (int i=0; i<word.length(); i++) {
-                char in = word.charAt(i);
-                int index = in - 'a';
+        StringTokenizer st = new StringTokenizer(word);
 
-                if (positions[index] == -1) {
-                    positions[index] = i;
-                }
-        }
-        for (int i=0; i<positions.length; i++) {
-            bw.write(positions[i] + " ");
-        }
+        System.out.println(st.countTokens());   // countTokens() 메소드: 토큰의 개수를 바로 출력
 
-        bw.flush();
-        bw.close();
         br.close();
     }
 }

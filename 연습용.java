@@ -721,7 +721,61 @@ public class 연습용{
         br.close();
     }
 
+    static void func2675() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        
+
+        int N = Integer.parseInt(br.readLine());
+
+        for (int i=0; i<N; i++) {
+            String newthing = br.readLine();
+            StringTokenizer st = new StringTokenizer(newthing);
+
+            String numberToken = st.nextToken();
+            String textToken = st.nextToken();
+
+            int R = Integer.parseInt(numberToken);
+            
+            for (int j=0; j<textToken.length(); j++) {
+                for (int k=0; k<R; k++) {
+                    bw.write(textToken.charAt(j));
+                }
+            }
+            bw.newLine();
+        }
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }
+
+    static void func1152() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        String word = br.readLine();
+        StringTokenizer st = new StringTokenizer(word);
+
+        System.out.println(st.countTokens());   // countTokens() 메소드: 토큰의 개수를 바로 출력
+    } 
+
+    static void func2908() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        
+        String nums1, nums2 = br.readLine();
+        StringBuilder sb = new StringBuilder(nums1);
+        sb.reverse();
+        StringBuilder sb1 = new StringBuilder(nums2);
+        sb1.reverse();
+
+        
+
+        
+    }
+
     public static void main(String[] args) throws IOException{
-        func10809();
+        func1152();
     }
 }
