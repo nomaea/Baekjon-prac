@@ -762,20 +762,104 @@ public class 연습용{
 
     static void func2908() throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         
-        String nums1, nums2 = br.readLine();
+        String nums = br.readLine();
+        StringTokenizer st = new StringTokenizer(nums);
+
+        String nums1 = st.nextToken();
+        String nums2 = st.nextToken();
+
+        /* 
         StringBuilder sb = new StringBuilder(nums1);
         sb.reverse();
         StringBuilder sb1 = new StringBuilder(nums2);
         sb1.reverse();
+        */
 
+        String reversedNum1 = new StringBuilder(nums1).reverse().toString();
+        String reversedNum2 = new StringBuilder(nums2).reverse().toString();
+
+        int renum1 = Integer.parseInt(reversedNum1);
+        int renum2 = Integer.parseInt(reversedNum2);
+
+        int MaxNum = Math.max(renum1, renum2);
+
+        System.out.println(MaxNum);
+
+        br.close();
+    }
+
+    static void func5622() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int totalTime = 0;
+        String word = br.readLine();
         
 
-        
+        for (int i=0; i<word.length(); i++) {
+            char ch = word.charAt(i);
+
+            switch (ch) {
+                case 'A':
+                case 'B':
+                case 'C':
+                    totalTime += 3;
+                    break;
+                case 'D':
+                case 'E':
+                case 'F':
+                    totalTime += 4;
+                    break;
+                case 'G':
+                case 'H':
+                case 'I':
+                    totalTime += 5;
+                    break;
+                case 'J':
+                case 'K':
+                case 'L':
+                    totalTime += 6;
+                    break;
+                case 'M':
+                case 'N':
+                case 'O':
+                    totalTime += 7;
+                    break;
+                case 'P':
+                case 'Q':
+                case 'R':
+                case 'S':
+                    totalTime += 8;
+                    break;
+                case 'T':
+                case 'U':
+                case 'V':
+                    totalTime += 9;
+                    break;
+                case 'W':
+                case 'X':
+                case 'Y':
+                case 'Z':
+                    totalTime += 10;
+                    break;
+            }
+        }
+        System.out.println(totalTime);
+    }
+
+    static void func11718() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        String line;
+
+        while ((line = br.readLine()) != null) {
+            System.out.println(line);
+        }
+
+        br.close();
     }
 
     public static void main(String[] args) throws IOException{
-        func1152();
+        func11718();
     }
 }
