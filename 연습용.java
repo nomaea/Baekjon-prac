@@ -859,7 +859,66 @@ public class 연습용{
         br.close();
     }
 
+    static void func25083() {
+        System.out.println("         ,r'\"7");
+        System.out.println("r`-_   ,'  ,/");
+        System.out.println(" \\. \". L_r'");
+        System.out.println("   `~\\/");
+        System.out.println("      |");
+        System.out.println("      |");
+    }
+
+    // Token별로 입력 및 출력을 위한 좋은 예제 기억 꼭 해야함
+    static void func3003() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int[] results = {1, 1, 2, 2, 2, 8};
+
+        StringBuilder sb = new StringBuilder(); // 결과값 출력을 위한 문자열 sb
+
+        for (int i=0; i<results.length; i++) {
+            int foundPiece = Integer.parseInt(st.nextToken());
+            sb.append(results[i] - foundPiece).append(" "); // 계산된 결과를 sb 문자열에 append
+        }
+
+        System.out.println(sb.toString().trim());   // sb에 쌓인 요소들을 하나의 완전한 문자열로 변환, trim으로 공백 제거
+    }
+
+    static void func2444() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int N = Integer.parseInt(br.readLine());
+
+        for(int i=1; i<=N; i++) {
+            for (int j=0; j<N-i; j++) {
+                bw.write(" ");
+            }
+            bw.write("*");
+            for (int j=0; j<i-1; j++) {
+                bw.write("**");
+            }
+            bw.newLine();
+        }
+
+        for (int i=2; i<=N; i++) {
+            for (int j=0; j<i-1; j++) {
+                bw.write(" ");
+            }
+            bw.write("*");
+            for (int j=0; j<N-i; j++) {
+                bw.write("**");
+            }
+            bw.newLine();
+        }
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }
+    
     public static void main(String[] args) throws IOException{
-        func11718();
+        func2444();
     }
 }
