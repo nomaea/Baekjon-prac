@@ -760,6 +760,7 @@ public class 연습용{
         System.out.println(st.countTokens());   // countTokens() 메소드: 토큰의 개수를 바로 출력
     } 
 
+    // Math 메서드 reverse 메서드 활용
     static void func2908() throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         
@@ -917,8 +918,61 @@ public class 연습용{
         bw.close();
         br.close();
     }
+
+    static void func10988() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        String word = br.readLine();
+
+        String reword = new StringBuilder(word).reverse().toString();
+
+        if (word.equals(reword)) { System.out.println(1);}
+        else {System.out.println(0);}
+    }
     
+    static void func1157() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        String word = br.readLine();
+        word = word.toUpperCase();
+
+        int[] counts = new int[26];
+
+        for (int i=0; i<word.length(); i++) {
+            char ch = word.charAt(i);
+            counts[ch - 'A']++;
+        }
+
+        int max = -1;
+        char results = '?';
+
+        for (int i=0; i<26; i++) {
+            if (counts[i] > max) {
+                max = counts[i];
+                results = (char) ('A' + i);
+            } else if (counts[i] == max) {
+                results = '?';
+            }
+        }
+        System.out.println(results);
+    }
+
+    // replace 함수 활용
+    static void func2941() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        String[] Croatia = {"dz=", "lj", "nj", "c=", "c-", "d-", "s=", "z="};
+            
+        String word = br.readLine();
+
+        for (String alpha : Croatia) {
+            word = word.replaceAll(alpha, " ");
+        }
+
+        System.out.println(word.length());
+    }
+
     public static void main(String[] args) throws IOException{
-        func2444();
+        func2941();
     }
 }
